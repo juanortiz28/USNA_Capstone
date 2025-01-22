@@ -1,0 +1,1236 @@
+
+<!-- saved from url=(0088)https://www.espruino.com/ide/blockly/blockly.html?lang=en&Enable=%7Cbluetooth%7Crobot%7C -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="blockly-renderer-style-geras-classic">.geras-renderer.classic-theme .blocklyText, 
+.geras-renderer.classic-theme .blocklyFlyoutLabelText {
+font: normal 11pt sans-serif;
+}
+.geras-renderer.classic-theme .blocklyText {
+fill: #fff;
+}
+.geras-renderer.classic-theme .blocklyNonEditableText>rect,
+.geras-renderer.classic-theme .blocklyEditableText>rect {
+fill: #fff;
+fill-opacity: .6;
+stroke: none;
+}
+.geras-renderer.classic-theme .blocklyNonEditableText>text,
+.geras-renderer.classic-theme .blocklyEditableText>text {
+fill: #000;
+}
+.geras-renderer.classic-theme .blocklyFlyoutLabelText {
+fill: #000;
+}
+.geras-renderer.classic-theme .blocklyText.blocklyBubbleText {
+fill: #000;
+}
+.geras-renderer.classic-theme .blocklyEditableText:not(.editing):hover>rect {
+stroke: #fff;
+stroke-width: 2;
+}
+.geras-renderer.classic-theme .blocklyHtmlInput {
+font-family: sans-serif;
+font-weight: normal;
+}
+.geras-renderer.classic-theme .blocklySelected>.blocklyPath {
+stroke: #fc3;
+stroke-width: 3px;
+}
+.geras-renderer.classic-theme .blocklyHighlightedConnectionPath {
+stroke: #fc3;
+}
+.geras-renderer.classic-theme .blocklyReplaceable .blocklyPath {
+fill-opacity: .5;
+}
+.geras-renderer.classic-theme .blocklyReplaceable .blocklyPathLight,
+.geras-renderer.classic-theme .blocklyReplaceable .blocklyPathDark {
+display: none;
+}
+.geras-renderer.classic-theme .blocklyInsertionMarker>.blocklyPath {
+fill-opacity: 0.2;
+stroke: none;
+}
+.geras-renderer.classic-theme .blocklyInsertionMarker>.blocklyPathLight,
+.geras-renderer.classic-theme .blocklyInsertionMarker>.blocklyPathDark {
+fill-opacity: 0.2;
+stroke: none;
+}</style><style id="blockly-common-style">
+.blocklySvg {
+  background-color: #fff;
+  outline: none;
+  overflow: hidden;  /* IE overflows by default. */
+  position: absolute;
+  display: block;
+}
+
+.blocklyWidgetDiv {
+  display: none;
+  position: absolute;
+  z-index: 99999;  /* big value for bootstrap3 compatibility */
+}
+
+.injectionDiv {
+  height: 100%;
+  position: relative;
+  overflow: hidden;  /* So blocks in drag surface disappear at edges */
+  touch-action: none;
+}
+
+.blocklyNonSelectable {
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+.blocklyBlockCanvas.blocklyCanvasTransitioning,
+.blocklyBubbleCanvas.blocklyCanvasTransitioning {
+  transition: transform .5s;
+}
+
+.blocklyTooltipDiv {
+  background-color: #ffffc7;
+  border: 1px solid #ddc;
+  box-shadow: 4px 4px 20px 1px rgba(0,0,0,.15);
+  color: #000;
+  display: none;
+  font: 9pt sans-serif;
+  opacity: .9;
+  padding: 2px;
+  position: absolute;
+  z-index: 100000;  /* big value for bootstrap3 compatibility */
+}
+
+.blocklyDropDownDiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  display: none;
+  border: 1px solid;
+  border-color: #dadce0;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 4px;
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
+}
+
+.blocklyDropDownDiv.blocklyFocused {
+  box-shadow: 0 0 6px 1px rgba(0,0,0,.3);
+}
+
+.blocklyDropDownContent {
+  max-height: 300px;  /* @todo: spec for maximum height. */
+  overflow: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.blocklyDropDownArrow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  z-index: -1;
+  background-color: inherit;
+  border-color: inherit;
+}
+
+.blocklyDropDownButton {
+  display: inline-block;
+  float: left;
+  padding: 0;
+  margin: 4px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid;
+  transition: box-shadow .1s;
+  cursor: pointer;
+}
+
+.blocklyArrowTop {
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-top-left-radius: 4px;
+  border-color: inherit;
+}
+
+.blocklyArrowBottom {
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-bottom-right-radius: 4px;
+  border-color: inherit;
+}
+
+.blocklyResizeSE {
+  cursor: se-resize;
+  fill: #aaa;
+}
+
+.blocklyResizeSW {
+  cursor: sw-resize;
+  fill: #aaa;
+}
+
+.blocklyResizeLine {
+  stroke: #515A5A;
+  stroke-width: 1;
+}
+
+.blocklyHighlightedConnectionPath {
+  fill: none;
+  stroke: #fc3;
+  stroke-width: 4px;
+}
+
+.blocklyPathLight {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 1;
+}
+
+.blocklySelected>.blocklyPathLight {
+  display: none;
+}
+
+.blocklyDraggable {
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+.blocklyDragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+  /* Changes cursor on mouse down. Not effective in Firefox because of
+     https://bugzilla.mozilla.org/show_bug.cgi?id=771241 */
+.blocklyDraggable:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.blocklyDragging.blocklyDraggingDelete {
+  cursor: url("media/handdelete.cur"), auto;
+}
+
+.blocklyDragging>.blocklyPath,
+.blocklyDragging>.blocklyPathLight {
+  fill-opacity: .8;
+  stroke-opacity: .8;
+}
+
+.blocklyDragging>.blocklyPathDark {
+  display: none;
+}
+
+.blocklyDisabled>.blocklyPath {
+  fill-opacity: .5;
+  stroke-opacity: .5;
+}
+
+.blocklyDisabled>.blocklyPathLight,
+.blocklyDisabled>.blocklyPathDark {
+  display: none;
+}
+
+.blocklyInsertionMarker>.blocklyPath,
+.blocklyInsertionMarker>.blocklyPathLight,
+.blocklyInsertionMarker>.blocklyPathDark {
+  fill-opacity: .2;
+  stroke: none;
+}
+
+.blocklyMultilineText {
+  font-family: monospace;
+}
+
+.blocklyNonEditableText>text {
+  pointer-events: none;
+}
+
+.blocklyFlyout {
+  position: absolute;
+  z-index: 20;
+}
+
+.blocklyText text {
+  cursor: default;
+}
+
+/*
+  Don't allow users to select text.  It gets annoying when trying to
+  drag a block and selected text moves instead.
+*/
+.blocklySvg text {
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  cursor: inherit;
+}
+
+.blocklyHidden {
+  display: none;
+}
+
+.blocklyFieldDropdown:not(.blocklyHidden) {
+  display: block;
+}
+
+.blocklyIconGroup {
+  cursor: default;
+}
+
+.blocklyIconGroup:not(:hover),
+.blocklyIconGroupReadonly {
+  opacity: .6;
+}
+
+.blocklyIconShape {
+  fill: #00f;
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+.blocklyIconSymbol {
+  fill: #fff;
+}
+
+.blocklyMinimalBody {
+  margin: 0;
+  padding: 0;
+}
+
+.blocklyHtmlInput {
+  border: none;
+  border-radius: 4px;
+  height: 100%;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Remove the increase and decrease arrows on the field number editor */
+input.blocklyHtmlInput[type=number]::-webkit-inner-spin-button,
+input.blocklyHtmlInput[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.blocklyMainBackground {
+  stroke-width: 1;
+  stroke: #c6c6c6;  /* Equates to #ddd due to border being off-pixel. */
+}
+
+.blocklyMutatorBackground {
+  fill: #fff;
+  stroke: #ddd;
+  stroke-width: 1;
+}
+
+.blocklyFlyoutBackground {
+  fill: #ddd;
+  fill-opacity: .8;
+}
+
+.blocklyMainWorkspaceScrollbar {
+  z-index: 20;
+}
+
+.blocklyFlyoutScrollbar {
+  z-index: 30;
+}
+
+.blocklyScrollbarHorizontal,
+.blocklyScrollbarVertical {
+  position: absolute;
+  outline: none;
+}
+
+.blocklyScrollbarBackground {
+  opacity: 0;
+}
+
+.blocklyScrollbarHandle {
+  fill: #ccc;
+}
+
+.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.blocklyScrollbarHandle:hover {
+  fill: #bbb;
+}
+
+/* Darken flyout scrollbars due to being on a grey background. */
+/* By contrast, workspace scrollbars are on a white background. */
+.blocklyFlyout .blocklyScrollbarHandle {
+  fill: #bbb;
+}
+
+.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.blocklyFlyout .blocklyScrollbarHandle:hover {
+  fill: #aaa;
+}
+
+.blocklyInvalidInput {
+  background: #faa;
+}
+
+.blocklyVerticalMarker {
+  stroke-width: 3px;
+  fill: rgba(255,255,255,.5);
+  pointer-events: none;
+}
+
+.blocklyComputeCanvas {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.blocklyNoPointerEvents {
+  pointer-events: none;
+}
+
+.blocklyContextMenu {
+  border-radius: 4px;
+  max-height: 100%;
+}
+
+.blocklyDropdownMenu {
+  border-radius: 2px;
+  padding: 0 !important;
+}
+
+.blocklyDropdownMenu .blocklyMenuItem {
+  /* 28px on the left for icon or checkbox. */
+  padding-left: 28px;
+}
+
+/* BiDi override for the resting state. */
+.blocklyDropdownMenu .blocklyMenuItemRtl {
+  /* Flip left/right padding for BiDi. */
+  padding-left: 5px;
+  padding-right: 28px;
+}
+
+.blocklyWidgetDiv .blocklyMenu {
+  background: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
+  font: normal 13px Arial, sans-serif;
+  margin: 0;
+  outline: none;
+  padding: 4px 0;
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+  z-index: 20000;  /* Arbitrary, but some apps depend on it... */
+}
+
+.blocklyWidgetDiv .blocklyMenu.blocklyFocused {
+  box-shadow: 0 0 6px 1px rgba(0,0,0,.3);
+}
+
+.blocklyDropDownDiv .blocklyMenu {
+  background: inherit;  /* Compatibility with gapi, reset from goog-menu */
+  border: inherit;  /* Compatibility with gapi, reset from goog-menu */
+  font: normal 13px "Helvetica Neue", Helvetica, sans-serif;
+  outline: none;
+  position: relative;  /* Compatibility with gapi, reset from goog-menu */
+  z-index: 20000;  /* Arbitrary, but some apps depend on it... */
+}
+
+/* State: resting. */
+.blocklyMenuItem {
+  border: none;
+  color: #000;
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  /* 7em on the right for shortcut. */
+  min-width: 7em;
+  padding: 6px 15px;
+  white-space: nowrap;
+}
+
+/* State: disabled. */
+.blocklyMenuItemDisabled {
+  color: #ccc;
+  cursor: inherit;
+}
+
+/* State: hover. */
+.blocklyMenuItemHighlight {
+  background-color: rgba(0,0,0,.1);
+}
+
+/* State: selected/checked. */
+.blocklyMenuItemCheckbox {
+  height: 16px;
+  position: absolute;
+  width: 16px;
+}
+
+.blocklyMenuItemSelected .blocklyMenuItemCheckbox {
+  background: url(media/sprites.png) no-repeat -48px -16px;
+  float: left;
+  margin-left: -24px;
+  position: static;  /* Scroll with the menu. */
+}
+
+.blocklyMenuItemRtl .blocklyMenuItemCheckbox {
+  float: right;
+  margin-right: -24px;
+}
+
+
+.blocklyZoom>image, .blocklyZoom>svg>image {
+  opacity: .4;
+}
+
+.blocklyZoom>image:hover, .blocklyZoom>svg>image:hover {
+  opacity: .6;
+}
+
+.blocklyZoom>image:active, .blocklyZoom>svg>image:active {
+  opacity: .8;
+}
+
+
+.blocklyCommentForeignObject {
+  position: relative;
+  z-index: 0;
+}
+
+.blocklyCommentRect {
+  fill: #E7DE8E;
+  stroke: #bcA903;
+  stroke-width: 1px;
+}
+
+.blocklyCommentTarget {
+  fill: transparent;
+  stroke: #bcA903;
+}
+
+.blocklyCommentTargetFocused {
+  fill: none;
+}
+
+.blocklyCommentHandleTarget {
+  fill: none;
+}
+
+.blocklyCommentHandleTargetFocused {
+  fill: transparent;
+}
+
+.blocklyFocused>.blocklyCommentRect {
+  fill: #B9B272;
+  stroke: #B9B272;
+}
+
+.blocklySelected>.blocklyCommentTarget {
+  stroke: #fc3;
+  stroke-width: 3px;
+}
+
+.blocklyCommentDeleteIcon {
+  cursor: pointer;
+  fill: #000;
+  display: none;
+}
+
+.blocklySelected > .blocklyCommentDeleteIcon {
+  display: block;
+}
+
+.blocklyDeleteIconShape {
+  fill: #000;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.blocklyDeleteIconShape.blocklyDeleteIconHighlighted {
+  stroke: #fc3;
+}
+
+
+.blocklyCommentTextarea {
+  background-color: #fef49c;
+  border: 0;
+  display: block;
+  margin: 0;
+  outline: 0;
+  padding: 3px;
+  resize: none;
+  text-overflow: hidden;
+}
+
+
+.blocklyAngleCircle {
+  stroke: #444;
+  stroke-width: 1;
+  fill: #ddd;
+  fill-opacity: 0.8;
+}
+
+.blocklyAngleMarks {
+  stroke: #444;
+  stroke-width: 1;
+}
+
+.blocklyAngleGauge {
+  fill: #f88;
+  fill-opacity: 0.8;
+  pointer-events: none;
+}
+
+.blocklyAngleLine {
+  stroke: #f00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+
+.blocklyColourTable {
+  border-collapse: collapse;
+  display: block;
+  outline: none;
+  padding: 1px;
+}
+
+.blocklyColourTable>tr>td {
+  border: 0.5px solid #888;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  padding: 0;
+  width: 20px;
+}
+
+.blocklyColourTable>tr>td.blocklyColourHighlighted {
+  border-color: #eee;
+  box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.blocklyColourSelected, .blocklyColourSelected:hover {
+  border-color: #eee !important;
+  outline: 1px solid #333;
+  position: relative;
+}
+
+
+.blocklyHtmlTextAreaInput {
+  font-family: monospace;
+  resize: none;
+  overflow: hidden;
+  height: 100%;
+  text-align: left;
+}
+
+.blocklyHtmlTextAreaInputOverflowedY {
+  overflow-y: scroll;
+}
+
+
+.blocklyFlyoutButton {
+  fill: #888;
+  cursor: default;
+}
+
+.blocklyFlyoutButtonShadow {
+  fill: #666;
+}
+
+.blocklyFlyoutButton:hover {
+  fill: #aaa;
+}
+
+.blocklyFlyoutLabel {
+  cursor: default;
+}
+
+.blocklyFlyoutLabelBackground {
+  opacity: 0;
+}
+
+
+.blocklyTreeRow:not(.blocklyTreeSelected):hover {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.blocklyToolboxDiv[layout="h"] .blocklyToolboxCategory {
+  margin: 1px 5px 1px 0;
+}
+
+.blocklyToolboxDiv[dir="RTL"][layout="h"] .blocklyToolboxCategory {
+  margin: 1px 0 1px 5px;
+}
+
+.blocklyTreeRow {
+  height: 22px;
+  line-height: 22px;
+  margin-bottom: 3px;
+  padding-right: 8px;
+  white-space: nowrap;
+}
+
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {
+  margin-left: 8px;
+  padding-right: 0;
+}
+
+.blocklyTreeIcon {
+  background-image: url(media/sprites.png);
+  height: 16px;
+  vertical-align: middle;
+  visibility: hidden;
+  width: 16px;
+}
+
+.blocklyTreeIconClosed {
+  background-position: -32px -1px;
+}
+
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeIconClosed {
+  background-position: 0 -1px;
+}
+
+.blocklyTreeSelected>.blocklyTreeIconClosed {
+  background-position: -32px -17px;
+}
+
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeSelected>.blocklyTreeIconClosed {
+  background-position: 0 -17px;
+}
+
+.blocklyTreeIconOpen {
+  background-position: -16px -1px;
+}
+
+.blocklyTreeSelected>.blocklyTreeIconOpen {
+  background-position: -16px -17px;
+}
+
+.blocklyTreeLabel {
+  cursor: default;
+  font: 16px sans-serif;
+  padding: 0 3px;
+  vertical-align: middle;
+}
+
+.blocklyToolboxDelete .blocklyTreeLabel {
+  cursor: url("media/handdelete.cur"), auto;
+}
+
+.blocklyTreeSelected .blocklyTreeLabel {
+  color: #fff;
+}
+
+
+.blocklyTreeSeparator {
+  border-bottom: solid #e5e5e5 1px;
+  height: 0;
+  margin: 5px 0;
+}
+
+.blocklyToolboxDiv[layout="h"] .blocklyTreeSeparator {
+  border-right: solid #e5e5e5 1px;
+  border-bottom: none;
+  height: auto;
+  margin: 0 5px 0 5px;
+  padding: 5px 0;
+  width: 0;
+}
+
+
+.blocklyToolboxDelete {
+  cursor: url("media/handdelete.cur"), auto;
+}
+
+.blocklyToolboxGrab {
+  cursor: url("media/handclosed.cur"), auto;
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* Category tree in Toolbox. */
+.blocklyToolboxDiv {
+  background-color: #ddd;
+  overflow-x: visible;
+  overflow-y: auto;
+  padding: 4px 0 4px 0;
+  position: absolute;
+  z-index: 70;  /* so blocks go under toolbox when dragging */
+  -webkit-tap-highlight-color: transparent;  /* issue #1345 */
+}
+
+.blocklyToolboxContents {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.blocklyToolboxContents:focus {
+  outline: none;
+}
+</style>
+    
+    <script type="text/javascript" src="./blockly_compressed.js"></script>
+    <script type="text/javascript" src="./blocks_compressed.js"></script>
+    <script type="text/javascript" src="./en.js"></script>
+    <script type="text/javascript" src="./en_espruino.js"></script>
+    <script type="text/javascript" src="./ru.js"></script>
+    <script type="text/javascript" src="./de.js"></script>
+    <script type="text/javascript" src="./javascript_compressed.js"></script>
+    <script type="text/javascript" src="./blockly_espruino.js"></script>
+    <script type="text/javascript" src="./blockly_menu.js"></script>
+    <script type="text/javascript" src="./blockly_gfx.js"></script>
+    <script type="text/javascript" src="./blockly_robot.js"></script>
+    <script type="text/javascript" src="./blockly_ble.js"></script>
+    <script type="text/javascript" src="./blockly_nordic_thingy.js"></script>
+    <script type="text/javascript" src="./blockly_smartibot.js"></script>
+    <script type="text/javascript" src="./blockly_bangle.js"></script>
+    <script type="text/javascript" src="./imageconverter.js"></script>
+    <style>
+      html, body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .blocklySvg {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+
+  <!-- Blockly toolbox -->
+  <xml id="toolbox" style="display: none">
+    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="Control" colour="%{BKY_LOOPS_HUE}">
+      <block type="espruino_delay">
+        <value name="SECONDS"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="espruino_timeout">
+        <value name="SECONDS"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="espruino_interval">
+        <value name="SECONDS"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <title name="NUM">10</title>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <block type="math_number">
+            <title name="NUM">1</title>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <title name="NUM">10</title>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <title name="NUM">1</title>
+          </block>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category name="Math" colour="%{BKY_MATH_HUE}">
+      <block type="math_number">
+        <title name="NUM">0</title>
+      </block>
+      <block type="math_arithmetic">
+        <title name="OP">ADD</title>
+      </block>
+      <block type="math_single">
+        <title name="OP">ROOT</title>
+      </block>
+      <block type="math_trig">
+        <title name="OP">SIN</title>
+      </block>
+      <block type="math_constant">
+        <title name="CONSTANT">PI</title>
+      </block>
+      <block type="math_number_property">
+        <mutation divisor_input="false"></mutation>
+        <title name="PROPERTY">EVEN</title>
+      </block>
+      <block type="math_change">
+        <title name="VAR">item</title>
+        <value name="DELTA">
+          <block type="math_number">
+            <title name="NUM">1</title>
+          </block>
+        </value>
+      </block>
+      <block type="math_round">
+        <title name="OP">ROUND</title>
+      </block>
+      <block type="math_on_list">
+        <title name="OP">SUM</title>
+      </block>
+      <block type="math_modulo"></block>
+      <block type="math_constrain">
+        <value name="LOW">
+          <block type="math_number">
+            <title name="NUM">1</title>
+          </block>
+        </value>
+        <value name="HIGH">
+          <block type="math_number">
+            <title name="NUM">100</title>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <block type="math_number">
+            <title name="NUM">1</title>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <title name="NUM">100</title>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category name="Text" colour="%{BKY_TEXTS_HUE}">
+      <block type="text">
+        <title name="TEXT"></title>
+      </block>
+      <block type="text_join" inline="false">
+        <mutation items="2"></mutation>
+      </block>
+      <block type="text_append" inline="false">
+        <title name="VAR">item</title>
+        <value name="TEXT">
+          <block type="text">
+            <title name="TEXT"></title>
+          </block>
+        </value>
+      </block>
+      <block type="text_length" inline="false"></block>
+      <block type="text_isEmpty" inline="true"></block>
+      <block type="text_indexOf" inline="true">
+        <title name="END">FIRST</title>
+        <value name="VALUE">
+          <block type="variables_get">
+            <title name="VAR">text</title>
+          </block>
+        </value>
+      </block>
+      <block type="text_charAt" inline="true">
+        <mutation at="true"></mutation>
+        <title name="WHERE">FROM_START</title>
+        <value name="VALUE">
+          <block type="variables_get">
+            <title name="VAR">text</title>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring" inline="true">
+        <mutation at1="true" at2="true"></mutation>
+        <title name="WHERE1">FROM_START</title>
+        <title name="WHERE2">FROM_START</title>
+        <value name="STRING">
+          <block type="variables_get">
+            <title name="VAR">text</title>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase" inline="false">
+        <title name="CASE">UPPERCASE</title>
+      </block>
+      <block type="text_trim" inline="false">
+        <title name="MODE">BOTH</title>
+      </block>
+      <block type="text_print" inline="false">
+        <value name="TEXT"><block type="text"><title name="TEXT">Hello</title></block></value>
+      </block>
+    </category>
+    <category name="Lists" colour="%{BKY_LISTS_HUE}">
+      <block type="variables_set"><title name="VAR">list</title><value name="VALUE">
+          <block type="lists_create_empty"></block>
+      </value></block>
+      <block type="variables_set"><title name="VAR">list</title><value name="VALUE">
+        <block type="lists_create_with" inline="false">
+          <mutation items="3"></mutation>
+        </block>
+      </value></block>
+      <block type="variables_set"><title name="VAR">list</title><value name="VALUE">
+        <block type="lists_repeat" inline="true">
+          <value name="NUM">
+            <block type="math_number">
+              <title name="NUM">5</title>
+            </block>
+          </value>
+        </block>
+      </value></block>
+      <block type="lists_length" inline="false"></block>
+      <block type="lists_isEmpty" inline="true"></block>
+      <block type="lists_indexOf" inline="true">
+        <title name="END">FIRST</title>
+        <value name="VALUE">
+          <block type="variables_get">
+            <title name="VAR">list</title>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex" inline="true">
+        <mutation statement="false" at="true"></mutation>
+        <title name="MODE">GET</title>
+        <title name="WHERE">FROM_START</title>
+        <value name="VALUE">
+          <block type="variables_get">
+            <title name="VAR">list</title>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex" inline="true">
+        <mutation at="true"></mutation>
+        <title name="MODE">SET</title>
+        <title name="WHERE">FROM_START</title>
+        <value name="LIST">
+          <block type="variables_get">
+            <title name="VAR">list</title>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist" inline="true">
+        <mutation at1="true" at2="true"></mutation>
+        <title name="WHERE1">FROM_START</title>
+        <title name="WHERE2">FROM_START</title>
+        <value name="LIST">
+          <block type="variables_get">
+            <title name="VAR">list</title>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="Variables">
+      <block type="variables_set" inline="false">
+        <title name="VAR">item</title>
+      </block>
+      <block type="variables_get">
+        <title name="VAR">item</title>
+      </block>
+    </category>
+    <!--<category name="Procedures">
+      <block type="procedures_defnoreturn"  >
+        <mutation></mutation>
+        <title name="NAME">do something</title>
+      </block>
+      <block type="procedures_defreturn" inline="false"  >
+        <mutation></mutation>
+        <title name="NAME">do something2</title>
+      </block>
+      <block type="procedures_ifreturn" inline="true"  >
+        <mutation value="1"></mutation>
+      </block>
+      TODO - need to auto-add calls here??
+    </category> -->
+    <category name="Espruino" disable_if="smartibot">
+      <block type="espruino_getTime"></block>
+      <block type="espruino_pin"></block>
+      <block type="espruino_watch">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">BTN1</title></block></value>
+      </block>
+      <block type="espruino_digitalWrite">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">LED1</title></block></value>
+      </block>
+      <block type="espruino_digitalPulse">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">LED1</title></block></value>
+        <value name="VAL"><block type="logic_boolean"><title name="BOOL">TRUE</title></block></value>
+        <value name="TIME"><block type="math_number"><title name="NUM">100</title></block></value>
+      </block>
+      <block type="espruino_digitalRead">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">BTN1</title></block></value>
+      </block>
+      <block type="espruino_analogWrite">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">A1</title></block></value>
+      </block>
+      <block type="espruino_analogRead">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">A0</title></block></value>
+      </block>
+      <block type="espruino_pinMode">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">D0</title></block></value>
+      </block>
+      <block type="espruino_code">
+      </block>
+      <block type="espruino_jsexpression">
+      </block>
+    </category>
+    <category name="Hardware" disable_if="smartibot">
+      <block type="hw_servoMove">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">B13</title></block></value>
+        <value name="VAL"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="hw_servoStop">
+        <value name="PIN"><block type="espruino_pin"><title name="PIN">B13</title></block></value>
+      </block>
+      <block type="hw_ultrasonic">
+        <value name="TRIG"><block type="espruino_pin"><title name="PIN">B4</title></block></value>
+        <value name="ECHO"><block type="espruino_pin"><title name="PIN">B3</title></block></value>
+      </block>
+    </category>
+    <category name="Graphics" disable_if="smartibot">
+      <block type="gfx_clear">
+      </block>
+      <block type="gfx_flip">
+      </block>
+      <block type="gfx_setFont">
+        <value name="SIZE"><block type="math_number"><title name="NUM">2</title></block></value>
+      </block>
+      <block type="gfx_setColor">
+      </block>
+      <block type="gfx_setBgColor">
+      </block>
+      <block type="gfx_drawString">
+        <value name="TEXT"><block type="text"><title name="TEXT">Hello</title></block></value>
+        <value name="X"><block type="math_number"><title name="NUM">0</title></block></value>
+        <value name="Y"><block type="math_number"><title name="NUM">0</title></block></value>
+      </block>
+      <block type="gfx_moveTo">
+        <value name="X"><block type="math_number"><title name="NUM">0</title></block></value>
+        <value name="Y"><block type="math_number"><title name="NUM">0</title></block></value>
+      </block>
+      <block type="gfx_lineTo">
+        <value name="X"><block type="math_number"><title name="NUM">100</title></block></value>
+        <value name="Y"><block type="math_number"><title name="NUM">100</title></block></value>
+      </block>
+      <block type="gfx_draw">
+        <value name="X"><block type="math_number"><title name="NUM">20</title></block></value>
+        <value name="Y"><block type="math_number"><title name="NUM">20</title></block></value>
+        <value name="X2"><block type="math_number"><title name="NUM">40</title></block></value>
+        <value name="Y2"><block type="math_number"><title name="NUM">40</title></block></value>
+      </block>
+      <block type="gfx_image">
+        <value name="X"><block type="math_number"><title name="NUM">20</title></block></value>
+        <value name="Y"><block type="math_number"><title name="NUM">20</title></block></value>
+      </block>
+    </category>
+    <category name="Menus" disable_if="smartibot">
+      <block type="menu_message">
+        <value name="TEXT"><block type="text"><title name="TEXT">Hello</title></block></value>
+      </block>
+      <block type="menu_alert">
+        <value name="TEXT"><block type="text"><title name="TEXT">Hello</title></block></value>
+      </block>
+      <block type="menu_prompt">
+        <value name="TEXT"><block type="text"><title name="TEXT">Hello</title></block></value>
+      </block>
+    </category>
+    <!-- Bangle.js -->
+    <category name="Bangle.js" disable_if="smartibot">
+      <block type="bangle_beep"></block>
+      <block type="bangle_buzz"></block>
+      <block type="bangle_turnon"></block>
+      <block type="bangle_turnoff"></block>
+      <block type="bangle_on"></block>
+      <block type="bangle_result_bool"></block>
+      <block type="bangle_result_number"></block>
+    </category>
+    <category name="Robot" enable_if="robot">
+      <label text="&#39;motor(l,r)&#39; must be defined in .boot0 for this"></label>
+      <block type="robot_fwd">
+        <value name="VAL"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="robot_back">
+        <value name="VAL"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="robot_left">
+        <value name="VAL"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+      <block type="robot_right">
+        <value name="VAL"><block type="math_number"><title name="NUM">1</title></block></value>
+      </block>
+    </category>
+    <!-- Nordic Thingy:52 -->
+    
+   
+
+    <category name="Bluetooth" enable_if="bluetooth">
+      <block type="ble_connected"></block>
+      <block type="ble_disconnected"></block>
+
+      <block type="ble_uart_write">
+        <value name="VAL"><block type="text"><title name="TEXT">LED.toggle()</title></block></value>
+        <value name="DEV"><block type="ble_dev_name"></block></value>
+      </block>
+      <block type="ble_advertise">
+        <value name="VAL"><block type="text"><title name="TEXT">Hello</title></block></value>
+      </block>
+      <block type="ble_on_advertise"></block>
+
+      <block type="ble_dev_name"></block>
+      <block type="ble_dev_prefix"></block>
+      <block type="ble_dev_address"></block>
+
+      <block type="ble_characteristic"></block>
+      <block type="ble_characteristic_dropdown"></block>
+
+      <block type="ble_setchar">
+        <value name="CHAR"><block type="ble_characteristic_dropdown"></block></value>
+        <value name="DEV"><block type="ble_dev_name"></block></value>
+      </block>
+      <block type="ble_getchar">
+        <value name="CHAR"><block type="ble_characteristic_dropdown"></block></value>
+        <value name="DEV"><block type="ble_dev_name"></block></value>
+      </block>
+      <block type="ble_write">
+        <value name="CHAR"><block type="ble_characteristic_dropdown"></block></value>
+        <value name="VAL"><block type="math_number"><title name="NUM">50</title></block></value>
+      </block>
+      <block type="ble_onwritten">
+        <value name="CHAR"><block type="ble_characteristic_dropdown"></block></value>
+      </block>
+      <block type="ble_value"></block>
+    </category>
+    <category name="Functions" custom="PROCEDURE"></category>
+  </xml>
+
+    <!-- Blockly initial code -->
+<xml id="blocklyInitial" style="display: none">
+  <block type="espruino_watch" inline="true"><title name="EDGE">rising</title><value name="PIN"><block type="espruino_pin"><title name="PIN">BTN1</title></block></value><statement name="DO"><block type="espruino_digitalWrite" inline="true"><value name="PIN"><block type="espruino_pin"><title name="PIN">LED1</title></block></value><value name="VAL"><block type="logic_boolean"><title name="BOOL">TRUE</title></block></value><next><block type="espruino_timeout" inline="true"><value name="SECONDS"><block type="math_number"><title name="NUM">1</title></block></value><statement name="DO"><block type="espruino_digitalWrite" inline="true"><value name="PIN"><block type="espruino_pin"><title name="PIN">LED1</title></block></value><value name="VAL"><block type="logic_boolean"><title name="BOOL">FALSE</title></block></value></block></statement></block></next></block></statement></block>
+</xml>
+<xml id="blocklyInitial_smartibot" style="display: none">
+
+</xml>
+
+  
+
+<div class="injectionDiv geras-renderer classic-theme" tabindex="0" aria-label="Blockly Workspace" dir="LTR"><div layout="v" class="blocklyToolboxDiv blocklyNonSelectable" dir="LTR" style="display: block; left: 0px; height: 100%;"><div class="blocklyToolboxContents" tabindex="0" role="tree"><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-0.label"><div class="blocklyTreeRow" id="blockly-0" style="padding-left: 0px; pointer-events: auto; border-left: 8px solid rgb(91, 128, 165);"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-0.label" class="blocklyTreeLabel">Logic</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-1.label"><div class="blocklyTreeRow" id="blockly-1" style="padding-left: 0px; pointer-events: auto; border-left: 8px solid rgb(91, 165, 91);"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-1.label" class="blocklyTreeLabel">Control</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-2.label"><div class="blocklyTreeRow" id="blockly-2" style="padding-left: 0px; pointer-events: auto; border-left: 8px solid rgb(91, 103, 165);"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-2.label" class="blocklyTreeLabel">Math</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-3.label"><div class="blocklyTreeRow" id="blockly-3" style="padding-left: 0px; pointer-events: auto; border-left: 8px solid rgb(91, 165, 140);"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-3.label" class="blocklyTreeLabel">Text</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-4.label"><div class="blocklyTreeRow" id="blockly-4" style="padding-left: 0px; pointer-events: auto; border-left: 8px solid rgb(116, 91, 165);"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-4.label" class="blocklyTreeLabel">Lists</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-5.label"><div class="blocklyTreeRow" id="blockly-5" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-5.label" class="blocklyTreeLabel">Variables</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-6.label"><div class="blocklyTreeRow" id="blockly-6" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-6.label" class="blocklyTreeLabel">Espruino</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-7.label"><div class="blocklyTreeRow" id="blockly-7" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-7.label" class="blocklyTreeLabel">Hardware</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-8.label"><div class="blocklyTreeRow" id="blockly-8" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-8.label" class="blocklyTreeLabel">Graphics</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-9.label"><div class="blocklyTreeRow" id="blockly-9" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-9.label" class="blocklyTreeLabel">Menus</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-a.label"><div class="blocklyTreeRow" id="blockly-a" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-a.label" class="blocklyTreeLabel">Bangle.js</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-b.label"><div class="blocklyTreeRow" id="blockly-b" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-b.label" class="blocklyTreeLabel">Robot</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-c.label"><div class="blocklyTreeRow" id="blockly-c" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-c.label" class="blocklyTreeLabel">Bluetooth</span></div></div></div><div class="blocklyToolboxCategory" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="blockly-d.label"><div class="blocklyTreeRow" id="blockly-d" style="padding-left: 0px; pointer-events: auto;"><div class="blocklyTreeRowContentContainer" style="pointer-events: none;"><span class="blocklyTreeIcon" role="presentation" style="display: inline-block;"></span><span id="blockly-d.label" class="blocklyTreeLabel">Functions</span></div></div></div></div></div><svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklySvg" tabindex="0" width="840px" data-cached-width="840" height="914px" data-cached-height="914"><defs><pattern id="blocklyGridPattern8282999544315108" patternUnits="userSpaceOnUse" width="0" height="0" x="99" y="0"><line stroke-width="1" x1="0" y1="0.5" x2="1" y2="0.5"></line></pattern></defs><g class="blocklyWorkspace"><rect height="100%" width="100%" class="blocklyMainBackground" style="fill: url(&quot;#blocklyGridPattern8282999544315108&quot;);"></rect><g class="blocklyTrash" transform="translate(758,819)" style="opacity: 0.4;"><clippath id="blocklyTrashBodyClipPath2720300629611814"><rect width="47" height="44" y="16"></rect></clippath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashBodyClipPath2720300629611814)" xlink:href="media/sprites.png"></image><clippath id="blocklyTrashLidClipPath2720300629611814"><rect width="47" height="16"></rect></clippath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashLidClipPath2720300629611814)" xlink:href="media/sprites.png" transform="rotate(0,43,14)"></image></g><g class="blocklyBlockCanvas" transform="translate(99,0) scale(1)"><g class="blocklyCursor"><g width="100" height="5"><rect width="100" height="5" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></rect><rect class="blocklyVerticalMarker" rx="10" ry="10" style="display: none;"></rect><path transform="" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path><path transform="" fill="none" stroke-width="4" style="display: none;"><animate attributeType="XML" attributeName="stroke" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path></g></g></g><g class="blocklyBubbleCanvas" transform="translate(99,0) scale(1)"></g><rect height="15" width="15" class="blocklyScrollbarBackground" x="824.5" y="898.5"></rect><defs><filter id="blocklyEmbossFilter10656888626559446"><fegaussianblur in="SourceAlpha" stdDeviation="1" result="blur"></fegaussianblur><fespecularlighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fepointlight x="-5000" y="-10000" z="20000"></fepointlight></fespecularlighting><fecomposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></fecomposite><fecomposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></fecomposite></filter><pattern id="blocklyDisabledPattern10656888626559446" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><filter id="blocklyDebugFilter10656888626559446" height="160%" width="180%" y="-30%" x="-40%"><fecomponenttransfer result="outBlur"><fefunca type="table" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"></fefunca></fecomponenttransfer><feflood flood-color="#ff0000" flood-opacity="0.5" result="outColor"></feflood><fecomposite in="outColor" in2="outBlur" operator="in" result="outGlow"></fecomposite></filter></defs></g></svg><svg class="blocklyScrollbarVertical blocklyMainWorkspaceScrollbar" width="15" height="898" style="transform: translate(824.5px, 0.5px);"><g><rect class="blocklyScrollbarBackground" width="15" height="898"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" width="10" x="2.5" height="449" y="449"></rect></g></svg><svg class="blocklyScrollbarHorizontal blocklyMainWorkspaceScrollbar" height="15" width="725" style="transform: translate(99.5px, 898.5px);"><g><rect class="blocklyScrollbarBackground" height="15" width="725"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" height="10" y="2.5" width="362.5" x="362.5"></rect></g></svg><svg class="blocklyFlyout" style="display: none;"><path class="blocklyFlyoutBackground"></path><g class="blocklyWorkspace"><g class="blocklyBlockCanvas"><g class="blocklyCursor"><g width="100" height="5"><rect width="100" height="5" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></rect><rect class="blocklyVerticalMarker" rx="10" ry="10" style="display: none;"></rect><path transform="" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path><path transform="" fill="none" stroke-width="4" style="display: none;"><animate attributeType="XML" attributeName="stroke" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path></g></g></g><g class="blocklyBubbleCanvas"></g><defs><filter id="blocklyEmbossFilter6959520118770537"><fegaussianblur in="SourceAlpha" stdDeviation="1" result="blur"></fegaussianblur><fespecularlighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fepointlight x="-5000" y="-10000" z="20000"></fepointlight></fespecularlighting><fecomposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></fecomposite><fecomposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></fecomposite></filter><pattern id="blocklyDisabledPattern6959520118770537" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><filter id="blocklyDebugFilter6959520118770537" height="160%" width="180%" y="-30%" x="-40%"><fecomponenttransfer result="outBlur"><fefunca type="table" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"></fefunca></fecomponenttransfer><feflood flood-color="#ff0000" flood-opacity="0.5" result="outColor"></feflood><fecomposite in="outColor" in2="outBlur" operator="in" result="outGlow"></fecomposite></filter></defs></g></svg><svg class="blocklyScrollbarVertical blocklyFlyoutScrollbar" width="15"><g><rect class="blocklyScrollbarBackground" width="15"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" width="10" x="2.5"></rect></g></svg><svg class="blocklyFlyout" style="display: none;"><path class="blocklyFlyoutBackground"></path><g class="blocklyWorkspace"><g class="blocklyBlockCanvas"><g class="blocklyCursor"><g width="100" height="5"><rect width="100" height="5" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></rect><rect class="blocklyVerticalMarker" rx="10" ry="10" style="display: none;"></rect><path transform="" style="display: none;"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path><path transform="" fill="none" stroke-width="4" style="display: none;"><animate attributeType="XML" attributeName="stroke" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path></g></g></g><g class="blocklyBubbleCanvas"></g><defs><filter id="blocklyEmbossFilter2944036300543662"><fegaussianblur in="SourceAlpha" stdDeviation="1" result="blur"></fegaussianblur><fespecularlighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fepointlight x="-5000" y="-10000" z="20000"></fepointlight></fespecularlighting><fecomposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></fecomposite><fecomposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></fecomposite></filter><pattern id="blocklyDisabledPattern2944036300543662" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><filter id="blocklyDebugFilter2944036300543662" height="160%" width="180%" y="-30%" x="-40%"><fecomponenttransfer result="outBlur"><fefunca type="table" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"></fefunca></fecomponenttransfer><feflood flood-color="#ff0000" flood-opacity="0.5" result="outColor"></feflood><fecomposite in="outColor" in2="outBlur" operator="in" result="outGlow"></fecomposite></filter></defs></g></svg><svg class="blocklyScrollbarVertical blocklyFlyoutScrollbar" width="15"><g><rect class="blocklyScrollbarBackground" width="15"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" width="10" x="2.5"></rect></g></svg></div><div class="blocklyWidgetDiv"></div><div class="blocklyDropDownDiv" style="opacity: 0; transition: transform 0.25s, opacity 0.25s;"><div class="blocklyDropDownContent"></div><div class="blocklyDropDownArrow"></div></div><div class="blocklyTooltipDiv"></div></body></html>

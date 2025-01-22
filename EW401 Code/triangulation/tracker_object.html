@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://www.espruino.com/ide/ -->
+<html><!-- index for ws.js or totally online Web IDE --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Web Serial Origin Trial - www.espruino.com -->
+  <meta http-equiv="origin-trial" content="AjRdPA+O3VUML2r8/U0gIUmgBgZLDktY1Kypa8hjMesuKpbfYhXRrWHgjGp7f2Yd5sM36E4+TZdkSHewx27wOgUAAABQeyJvcmlnaW4iOiJodHRwczovL3d3dy5lc3BydWluby5jb206NDQzIiwiZmVhdHVyZSI6IlNlcmlhbCIsImV4cGlyeSI6MTU4OTM1NzgxNn0=">
+
+  <link rel="icon" href="https://www.espruino.com/ide/favicon.ico">
+  <link rel="manifest" href="https://www.espruino.com/ide/webapp_manifest.json">
+
+  <link rel="stylesheet" href="./tracker_object_files/index.css">
+<script>
+    // Force HTTPS - needed for web bluetooth
+    var l = window.location.toString();
+    if (l.substr(0,7)=="http://" && !window.location.port)
+      window.location = "https://"+l.substr(7);
+  </script>
+
+  <title>Espruino Web IDE</title>
+<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+<body style="">
+
+  <div class="window">
+
+    <!-- Title Bar -->
+    
+
+    <!-- Viewport -->
+    <div class="window__viewport">
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="h-split">
+          <div class="h-split__left toolbar__buttons toolbar__buttons--left"><a id="icon-connection" class="icon lrg icon-disconnect" title="Connect / Disconnect" data-icon-order="-1000"></a></div><div id="file_list"><span class="file_list-tab inactive" fileindex="0">📄 led_alternatw.js</span><span class="file_list-tab inactive" fileindex="1">📄 clicker.js</span><span class="file_list-tab active" fileindex="2">📄 connection.js&nbsp;<span class="close">✕</span></span><span class="file_list-new">+</span></div>
+          <div class="h-split__right toolbar__buttons toolbar__buttons--right"><a id="icon-settings" class="icon icon-settings lrg " title="Settings" data-icon-order="-100"></a><a id="icon-help" class="icon icon-help lrg " title="Help" data-icon-order="-95"><div class="menu"><a id="menu-tour" title="Tour" data-icon-order="2"><i class="icon-compass sml"></i>Tour</a><a id="menu-tutorial" title="Tutorial" data-icon-order="100"><i class="icon-help sml"></i>Tutorial</a><a id="menu-forum" title="Forum" data-icon-order="100"><i class="icon-chat sml"></i>Forum</a><a id="menu-troubleshooting" title="Troubleshooting" data-icon-order="100"><i class="icon-book sml"></i>Troubleshooting</a></div></a><a id="icon-orientation" class="icon icon-split-vertical lrg icon--divide-right" title="Toggle Orientation" data-icon-order="-80"></a><a id="icon-update" class="icon icon-alert lrg  icon-alert" title="New Firmware 2v25 available. Click to update." data-icon-order="999"></a></div>
+        </div>
+      </div>
+
+      <!-- Splitter -->
+      <div class="split-pane splitster splitster--vertical">
+
+        <div class="split-pane__left splitster__pane" style="width: 900px; height: 100%; top: 0px; left: 0px;">
+
+        <div class="split-pane__loading">LOADING ...</div>
+
+          <div class="editor editor--terminal">
+            <div class="sidebar editor__sidebar">
+              <div class="v-split">
+                <div class="v-split__top sidebar__buttons sidebar__buttons--top"><a id="icon-clearScreen" class="icon icon-clear lrg " title="Clear Screen" data-icon-order="-100"></a></div>
+                <div class="v-split__bottom sidebar__buttons sidebar__buttons--bottom"></div>
+              </div>
+            </div>
+            <div class="canvas editor__canvas editor__canvas__terminal"><textarea id="terminalfocus" class="terminal__focus" rows="1" cols="1" style="z-index: -100; position: absolute; left: 70px; top: -228px;"></textarea><div id="terminal" class="terminal terminal--connected" style="font-size: 12px;"><div class="termLine" linenumber="0"><div class="terminal-status-container"><div class="terminal-status terminal-status-error">Connection Failed.</div></div><span class="terminal__cursor">&nbsp;</span></div><div class="termLine" linenumber="0"><div class="terminal-status-container"><div class="terminal-status terminal-status-error">Connection Failed.</div></div></div><div class="termLine" linenumber="1"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">Found PUCKJS, 2v24</div></div>&gt;</div><div class="termLine" linenumber="2"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">New Firmware available (2.24 installed, 2v25 available)</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-success">Connected to Web Bluetooth, JuanPuck</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-error">Connection Failed.</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-error">Connection Failed: NotFoundError: User cancelled the requestDevice() chooser.</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-error">Connection Failed: NotFoundError: User cancelled the requestDevice() chooser.</div></div>&gt;&lt;-&nbsp;Serial1</div><div class="termLine" linenumber="3"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">Found PUCKJS, 2v24</div></div>&gt;</div><div class="termLine" linenumber="4"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">New Firmware available (2.24 installed, 2v25 available)</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-success">Connected to JuanPuck</div></div>&gt;</div><div class="termLine" linenumber="5">&nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_</div><div class="termLine" linenumber="6">|&nbsp;&nbsp;__|___&nbsp;___&nbsp;___&nbsp;_&nbsp;_|_|___&nbsp;___</div><div class="termLine" linenumber="7">|&nbsp;&nbsp;__|_&nbsp;-|&nbsp;.&nbsp;|&nbsp;&nbsp;_|&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;.&nbsp;|</div><div class="termLine" linenumber="8">|____|___|&nbsp;&nbsp;_|_|&nbsp;|___|_|_|_|___|</div><div class="termLine" linenumber="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_|&nbsp;espruino.com</div><div class="termLine" linenumber="10">&nbsp;2v24&nbsp;(c)&nbsp;2024&nbsp;G.Williams</div><div class="termLine" linenumber="11"></div><div class="termLine" linenumber="12">&gt;</div><div class="termLine" linenumber="13"></div><div class="termLine" linenumber="14">&gt;</div><div class="termLine" linenumber="15">&nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_</div><div class="termLine" linenumber="16">|&nbsp;&nbsp;__|___&nbsp;___&nbsp;___&nbsp;_&nbsp;_|_|___&nbsp;___</div><div class="termLine" linenumber="17">|&nbsp;&nbsp;__|_&nbsp;-|&nbsp;.&nbsp;|&nbsp;&nbsp;_|&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;.&nbsp;|</div><div class="termLine" linenumber="18">|____|___|&nbsp;&nbsp;_|_|&nbsp;|___|_|_|_|___|</div><div class="termLine" linenumber="19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_|&nbsp;espruino.com</div><div class="termLine" linenumber="20">&nbsp;2v24&nbsp;(c)&nbsp;2024&nbsp;G.Williams</div><div class="termLine" linenumber="21"></div><div class="termLine" linenumber="22">&gt;</div><div class="termLine" linenumber="23"></div><div class="termLine" linenumber="24">&gt;</div><div class="termLine" linenumber="25">&nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_</div><div class="termLine" linenumber="26">|&nbsp;&nbsp;__|___&nbsp;___&nbsp;___&nbsp;_&nbsp;_|_|___&nbsp;___</div><div class="termLine" linenumber="27">|&nbsp;&nbsp;__|_&nbsp;-|&nbsp;.&nbsp;|&nbsp;&nbsp;_|&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;.&nbsp;|</div><div class="termLine" linenumber="28">|____|___|&nbsp;&nbsp;_|_|&nbsp;|___|_|_|_|___|</div><div class="termLine" linenumber="29">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_|&nbsp;espruino.com</div><div class="termLine" linenumber="30">&nbsp;2v24&nbsp;(c)&nbsp;2024&nbsp;G.Williams</div><div class="termLine" linenumber="31"></div><div class="termLine" linenumber="32">&gt;</div><div class="termLine" linenumber="33"></div><div class="termLine" linenumber="34">&gt;</div><div class="termLine" linenumber="35">&nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_</div><div class="termLine" linenumber="36">|&nbsp;&nbsp;__|___&nbsp;___&nbsp;___&nbsp;_&nbsp;_|_|___&nbsp;___</div><div class="termLine" linenumber="37">|&nbsp;&nbsp;__|_&nbsp;-|&nbsp;.&nbsp;|&nbsp;&nbsp;_|&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;.&nbsp;|</div><div class="termLine" linenumber="38">|____|___|&nbsp;&nbsp;_|_|&nbsp;|___|_|_|_|___|</div><div class="termLine" linenumber="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_|&nbsp;espruino.com</div><div class="termLine" linenumber="40">&nbsp;2v24&nbsp;(c)&nbsp;2024&nbsp;G.Williams</div><div class="termLine" linenumber="41"></div><div class="termLine" linenumber="42">&gt;</div><div class="termLine" linenumber="43"></div><div class="termLine" linenumber="44"><div class="terminal-status-container"><div class="terminal-status terminal-status-warning">Disconnected from JuanPuck</div></div>&gt;</div><div class="termLine" linenumber="45">&lt;-&nbsp;Serial1</div><div class="termLine" linenumber="46"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">Found PUCKJS, 2v21</div></div>&gt;</div><div class="termLine" linenumber="47"><div class="terminal-status-container"><div class="terminal-status terminal-status-info">New Firmware available (2.21 installed, 2v25 available)</div></div><div class="terminal-status-container"><div class="terminal-status terminal-status-success">Connected to Web Bluetooth, Puck1</div></div>&gt;<span class="terminal__cursor">&nbsp;</span></div></div><div id="divTesting" class="Testing" style="display:none;border:none;height:100%;width:100%;"><table width="100%" height="100%" border="1" bgcolor="#ffd">
+  <tbody><tr>
+    <th height="45px">
+      <button id="loadTesting" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Load"><span class="ui-button-icon-primary ui-icon ui-icon-script"></span><span class="ui-button-text">Load</span></button>
+      <span id="testingName"></span> 
+      <button id="saveTesting" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Save"><span class="ui-button-icon-primary ui-icon ui-icon-disk"></span><span class="ui-button-text">Save</span></button>
+    </th>
+    <th>
+      <button id="testingExpressionRun" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Run"><span class="ui-button-icon-primary ui-icon ui-icon-play"></span><span class="ui-button-text">Run</span></button>
+      <button id="testingExpressionStop" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-button-disabled ui-state-disabled" role="button" aria-disabled="true" title="Stop" disabled=""><span class="ui-button-icon-primary ui-icon ui-icon-stop"></span><span class="ui-button-text">Stop</span></button>
+      <input type="checkbox" title="log data" id="testingLog">Log
+      <button id="openTestingLog" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Log Testing"><span class="ui-button-icon-primary ui-icon ui-icon-image"></span><span class="ui-button-text">Log Testing</span></button> 
+    </th>
+    <th>
+      <select id="testMode"><option>Form</option><option>Image</option></select>
+      <button id="testProperties">Properties</button>
+    </th>          
+  </tr>
+  <tr><td colspan="3" id="testingForm"><table width="100%" height="100%">
+  <tbody><tr height="350"><th>
+    <table width="100%" height="100%" bgcolor="#dfd">      
+      <tbody><tr>
+        <th>
+          <button id="testingExpressionClear" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Drop all expressions"><span class="ui-button-icon-primary ui-icon ui-icon-minusthick"></span><span class="ui-button-text">Drop all expressions</span></button>
+        </th>
+        <th>
+          <button id="testingExpressionReset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Reset Chart"><span class="ui-button-icon-primary ui-icon ui-icon-seek-first"></span><span class="ui-button-text">Reset Chart</span></button>
+        </th>
+      </tr>
+      <tr>
+        <th valign="top"><div id="testingTable"><table border="1" id="detailsTable"><tbody><tr><td class="alterDataPoint" title="getTime()
+number">Time</td><th><button class="dropDataPoint ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" i="0" role="button" aria-disabled="false" title="Drop"><span class="ui-button-icon-primary ui-icon ui-icon-minus"></span><span class="ui-button-text">Drop</span></button></th></tr><tr></tr><tr><td class="alterDataPoint" title="process.memory().free
+number">FreeMemory</td><th><button class="dropDataPoint ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" i="1" role="button" aria-disabled="false" title="Drop"><span class="ui-button-icon-primary ui-icon ui-icon-minus"></span><span class="ui-button-text">Drop</span></button></th></tr><tr></tr></tbody></table></div></th>
+        <th valign="top">
+          <div id="testingChart">
+            <div id="flotlegendholder"><table style="font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Time</td><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">FreeMemory</td></tr></tbody></table></div>
+            <div id="flotplaceholder" style="width: 380px; height: 200px; padding: 0px; position: relative;"><canvas class="flot-base" width="760" height="400" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 380px; height: 200px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 198px; left: 190px; text-align: center;">00:00:00</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 192px; left: 2px; text-align: right;">-1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 146px; left: 2px; text-align: right;">-0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 100px; left: 2px; text-align: right;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 54px; left: 2px; text-align: right;">0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 8px; left: 2px; text-align: right;">1.0</div></div></div><canvas class="flot-overlay" width="760" height="400" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 380px; height: 200px;"></canvas></div>
+          </div>
+          <div id="flottertooltip" style="position:absolute;display:none;border:1px solid #fdd;padding:2px;background-color:#fee;opacity:0.80;">
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="2" valign="bottom">
+          <input id="testingLabel" size="10" maxlength="20" value="newExpr">
+          <input id="testingExpression" size="40" value="getTime()">
+          <select id="testingType">
+            <option value="number">Number</option>
+            <option value="string">String</option>
+          </select>
+          <button id="testingAdd" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="new Expression"><span class="ui-button-icon-primary ui-icon ui-icon-circle-plus"></span><span class="ui-button-text">new Expression</span></button>
+        </th>
+      </tr>
+    </tbody></table>      
+  </th></tr>
+  <tr><th>
+    <table width="100%" height="100%" bgcolor="#ccf">    
+      <tbody><tr>
+        <th colspan="2">
+          <button id="testingSetClear" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="Clear"><span class="ui-button-icon-primary ui-icon ui-icon-minusthick"></span><span class="ui-button-text">Clear</span></button>
+        </th>
+      </tr>
+      <tr>
+        <th valign="top"><div id="testingAction"><table boder="1" id="actionTable"></table></div></th>
+      </tr>
+      <tr>
+        <th valign="bottom">
+          <input id="actionName" size="10" maxlength="20" value="newAction">
+          <input id="actionExpression" size="20" value="myVariable">
+          <select id="actionType">
+            <option value="number">Number</option>
+            <option value="boolean">Boolean</option>
+            <option value="string">String</option>
+            <option value="command">Command</option>
+          </select>
+          <button id="testingAddAction" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" role="button" aria-disabled="false" title="new Action"><span class="ui-button-icon-primary ui-icon ui-icon-circle-plus"></span><span class="ui-button-text">new Action</span></button>
+        </th>
+      </tr>
+    </tbody></table>      
+  </th></tr>
+</tbody></table>
+
+</td></tr>
+</tbody></table></div><div id="divTesting" class="Testing" style="display:none;border:none;height:100%;width:100%;"></div></div>
+          </div>
+
+        </div><div class="splitster__bar ui-draggable" style="width: 0px; height: 0px; top: 0px; left: 900px;"></div>
+
+        <div class="split-pane__right splitster__pane" style="width: 900px; height: 100%; top: 0px; left: 900px;">
+
+          <div class="editor editor--code">
+            <div class="sidebar editor__sidebar ui-draggable splitster__draggable">
+              <div class="v-split">
+                <div class="v-split__top sidebar__buttons sidebar__buttons--top"><a id="icon-openFile" class="icon icon-folder-open lrg  icon--hasinfo" title="Open File" data-icon-order="100"><span class="icon__info">open</span><span class="icon__more">▼</span></a><a id="icon-saveFile" class="icon icon-save lrg " title="Save File" data-icon-order="200"></a><a id="icon-storage" class="icon icon-storage lrg " title="Access files in device&#39;s storage" data-icon-order="300"></a><a id="icon-deploy" class="icon icon-deploy lrg  icon--hasinfo" title="Send to Espruino" data-icon-order="400"><span class="icon__info">RAM</span><span class="icon__more">▼</span></a></div>
+                <div class="v-split__bottom sidebar__buttons sidebar__buttons--bottom"><a id="icon-code" class="icon lrg icon-code" title="Switch between Code and Graphical Designer" data-icon-order="0"></a></div>
+              </div>
+            </div>
+            <div class="canvas editor__canvas"><div id="divcode0" style="width:100%;height:100%;"><textarea id="code0" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-focused" translate="no" style="clip-path: inset(0px);"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 630.406px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 55px; margin-bottom: -15px; border-right-width: 35px; min-height: 23px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like">x</pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>10</div></div><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>2</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 575.406px; top: 0px; height: 15px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -55px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NRF</span>.<span class="cm-property">setAdvertising</span>({ <span class="cm-number cm-property">0xFFFF</span>: [<span class="cm-number">0x01</span>] }, { <span class="cm-property">name</span>: <span class="cm-string">"Puck1"</span>, <span class="cm-property">interval</span>: <span class="cm-number">500</span> });</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 35px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="height: 58px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div><div class="CodeMirror-gutter CodeMirror-lint-markers"></div></div></div></div></div><iframe id="divblockly" class="blocky" style="border:none;" src="./tracker_object_files/blockly.html"></iframe></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="status">
+        <div class="h-split">
+          <div class="h-split__left status__left"><h5 class="status__message">Connected to Web Bluetooth, Puck1</h5></div>
+          <div class="h-split__right status__right"><h5 class="status__port">Puck1</h5><div class="status__progress" style="display: none;"><div class="status__progress-bar" style="width: 0px;"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="./tracker_object_files/index.js"></script>
+<!-- load console here, so we get any messages while loading -->
+    <!-- SERIAL_INTERFACES -->
+    <!-- Electron / nw.js -->
+    <!-- WebRTC/Peer.js connection -->
+    <!-- Popup Windows -->
+    <!-- Special pages in Settings Window -->
+    <!-- Non-vital Plugins -->
+    <!-- needed for unicode -->
+    <!-- needed for minify -->
+    <!-- needed for minify -->
+    <!-- needed for minify -->
+    <!-- This should come before saveOnSend -->
+    <!-- This should come after minify -->
+    <!-- This should come after save on send -->
+
+    <!-- js/plugins/fileReload.js BROKEN -->
+    <!-- smart autocomplete -->
+    <!-- for storage.js -->
+    <!-- js/plugins/_examplePlugin.js -->
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="./tracker_object_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZKP1D1PY6Q');
+
+  // register service worker on known origins
+  if (window.location.origin == "https://www.espruino.com") {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceworker.js').then(function(reg) {
+        if(reg.installing) {
+          console.log('serviceworker> installing');
+        } else if(reg.waiting) {
+          console.log('serviceworker> installed');
+        } else if(reg.active) {
+          console.log('serviceworker> active');
+        }
+      }).catch(function(error) {
+        console.log('serviceworker> registration failed with ' + error);
+      });
+    }
+  }
+</script>
+
+
+</div><div id="flottooltip" style="position: absolute; display: none; border: 1px solid rgb(255, 221, 221); padding: 2px; background-color: rgb(255, 238, 238); opacity: 0.8;"></div><audio preload="auto" src=""></audio><div class="guider" id="g0" style="width: 400px; display: none; position: absolute; top: 69px; left: 1280px;">  <div class="guiders_content">    <h1 class="guiders_title">Web IDE tour</h1>    <div class="guiders_close"></div>    <p class="guiders_description">Click here for a quick tour of the new Web IDE</p>      </div>  <div class="guiders_arrow guiders_arrow_up" style="right: 21px;">  </div></div><div id="guiders_overlay" style="display: none;"></div><div class="guider" id="g1" style="width: 400px; display: none; position: fixed; top: 222px; left: 700px;">  <div class="guiders_content">    <h1 class="guiders_title">Welcome to the Espruino Web IDE</h1>    <div class="guiders_close"></div>    <p class="guiders_description">The Espruino Web IDE is designed for writing code on microcontrollers that use the <a href="http://www.espruino.com/" target="_blank">Espruino JavaScript interpreter</a><br><br>To help you get up to speed quickly with the IDE, this tour will run you through some of the core features you'll need to know to get started. <br><br>So when you are ready, click next to continue.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow">  </div></div><div class="guider" id="g2" style="width: 400px; display: none; position: absolute; top: 69px; left: 0px;">  <div class="guiders_content">    <h1 class="guiders_title">Connect to your Espruino</h1>    <div class="guiders_close"></div>    <p class="guiders_description">The first thing you'll want to do is connect to your Espruino board by clicking the 'Connect' button.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow guiders_arrow_up" style="left: 21px;">  </div></div><div class="guider" id="g3" style="width: 400px; display: none; position: fixed; top: 274.333px; left: 700px;">  <div class="guiders_content">    <h1 class="guiders_title">Select your port</h1>    <div class="guiders_close"></div>    <p class="guiders_description">Connect your Espruino to an available port and select the port from the list.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow">  </div></div><div class="guider" id="g4" style="width: 400px; display: none; position: absolute; top: 69px; left: 0px;">  <div class="guiders_content">    <h1 class="guiders_title">Connected</h1>    <div class="guiders_close"></div>    <p class="guiders_description">The 'Connect' button should then turn green and you are ready to go.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow guiders_arrow_up" style="left: 21px;">  </div></div><div class="guider" id="g5" style="width: 400px; display: none; position: absolute; top: 683px; left: 280px;">  <div class="guiders_content">    <h1 class="guiders_title">The terminal</h1>    <div class="guiders_close"></div>    <p class="guiders_description">To send simple commands to the Espruino, simply type them in the terminal window and hit enter to send.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow guiders_arrow_up" style="left: 179px;">  </div></div><div class="guider" id="g6" style="width: 400px; display: none; position: absolute; top: 126.5px; left: 491px;">  <div class="guiders_content">    <h1 class="guiders_title">The code editor</h1>    <div class="guiders_close"></div>    <p class="guiders_description">To send more complex blocks of javascript, write them in the code editor window...</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow guiders_arrow_right" style="top: 69.5px;">  </div></div><div class="guider" id="g7" style="width: 400px; display: none; position: fixed; top: 274.333px; left: 700px;">  <div class="guiders_content">    <h1 class="guiders_title">The block editor</h1>    <div class="guiders_close"></div>    <p class="guiders_description">...or switch to the block editor and use 'Scratch' like code blocks...</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow">  </div></div><div class="guider" id="g8" style="width: 400px; display: none; position: absolute; top: 139.5px; left: 491px;">  <div class="guiders_content">    <h1 class="guiders_title">Deploying your code</h1>    <div class="guiders_close"></div>    <p class="guiders_description">...then when your are ready, upload it to your Espruino by clicking the 'Deploy' button.</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Next</a></div>  </div>  <div class="guiders_arrow guiders_arrow_right" style="top: 69.5px;">  </div></div><div class="guider" id="g9" style="width: 400px; display: none; position: fixed; top: 231.333px; left: 700px;">  <div class="guiders_content">    <h1 class="guiders_title">Go wild!</h1>    <div class="guiders_close"></div>    <p class="guiders_description">And those are the basics of the Espruino Web IDE.<br><br>For more helpful guides and tutorials, be sure to check out the <a href="http://www.espruino.com/Tutorials" target="_blank">Tutorials</a> section on the Espruino website, or if you have any questions, why not head on over to the <a href="http://forum.espruino.com/" target="_blank">Forums</a>.<br><br>We hope you enjoy your Espruino!</p>    <div class="guiders_buttons_container">    <a class="guiders_button" href="https://www.espruino.com/ide/#">Close</a></div>  </div>  <div class="guiders_arrow">  </div></div></body></html>
